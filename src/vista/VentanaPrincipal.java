@@ -114,7 +114,7 @@ public class VentanaPrincipal extends JFrame {
            //boton[i].setFocusPainted(false);
           boton[i].setBorder(null);
           boton[i].setBorderPainted(false);
-          //boton[i].setBackground(new Color(0, 64, 128));
+          boton[i].setBackground(new Color(0, 64, 128));
            boton[i].addActionListener(evento);
            tableroJuego.add(boton[i]);
        }
