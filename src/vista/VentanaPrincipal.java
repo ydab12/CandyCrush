@@ -38,9 +38,10 @@ import javax.swing.UIManager;
  */
 public class VentanaPrincipal extends JFrame {
     
-     ControladorEventos evento = new ControladorEventos(this);
+     ControladorEventos evento;
      ArrayList<ImageIcon> caramelos = new ArrayList();
-     JButton[] boton = new JButton[81];
+     ArrayList<ImageIcon> caramelosclick = new ArrayList();
+    public  JButton[] boton = new JButton[81];
      JPanel tableroJuego;
      JPanel menu;
      JProgressBar barra;
@@ -50,8 +51,8 @@ public class VentanaPrincipal extends JFrame {
      JLabel tmovimientos;
      JLabel tnivel;
     
-    public VentanaPrincipal() throws IOException{
-        
+    public VentanaPrincipal(ControladorEventos eventos) throws IOException{
+        this.evento=eventos;
         ImageIcon c1 =new ImageIcon("src/vista/imagenes/c1.png");
         caramelos.add(c1);
         ImageIcon c2 =new ImageIcon("src/vista/imagenes/c2.png");
@@ -65,8 +66,20 @@ public class VentanaPrincipal extends JFrame {
         ImageIcon c6 =new ImageIcon("src/vista/imagenes/c6.png");
         caramelos.add(c6);
         
+        ImageIcon c1_2 =new ImageIcon("src/vista/imagenes/click/c1_2.png");
+        caramelosclick.add(c1_2 );
+        ImageIcon c2_2 =new ImageIcon("src/vista/imagenes/click/c2_2.png");
+        caramelosclick.add(c2_2 );
+        ImageIcon c3_2 =new ImageIcon("src/vista/imagenes/click/c3_2.png");
+        caramelosclick.add(c3_2 );
+        ImageIcon c4_2 =new ImageIcon("src/vista/imagenes/click/c4_2.png");
+        caramelosclick.add(c4_2 );
+        ImageIcon c5_2 =new ImageIcon("src/vista/imagenes/click/c5_2.png");
+        caramelosclick.add(c5_2 );
+        ImageIcon c6_2 =new ImageIcon("src/vista/imagenes/click/c6_2.png");
+        caramelosclick.add(c6_2 );
+        
         FondoSwing fondo = new FondoSwing(ImageIO.read(new File("src/vista/imagenes/fondo.jpg")));
-        FondoSwing fondo2 = new FondoSwing(ImageIO.read(new File("src/vista/imagenes/fondo2.jpg")));
         GridBagLayout gridbag = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();
         // inicializanda ventana 
@@ -111,11 +124,11 @@ public class VentanaPrincipal extends JFrame {
            
            boton[i]=new JButton();
            boton[i].setRolloverEnabled(false);
-           //boton[i].setFocusPainted(false);
+          boton[i].setFocusPainted(false);
           boton[i].setBorder(null);
           boton[i].setBorderPainted(false);
           boton[i].setBackground(new Color(0, 64, 128));
-           boton[i].addActionListener(evento);
+          boton[i].addActionListener(evento);
            tableroJuego.add(boton[i]);
        }
         
@@ -141,7 +154,8 @@ public class VentanaPrincipal extends JFrame {
     }  
     
     public void setProgreso(int progreso){barra.setValue(barra.getValue()+progreso);}
-    
+    public ArrayList<ImageIcon> getCaramelos(){return caramelos;}
+    public ArrayList<ImageIcon> getCaramelosClick(){return caramelosclick;}
     public void actualizar(int[][] caramelo){
         
         for(int i=0;i<caramelo.length;i++){

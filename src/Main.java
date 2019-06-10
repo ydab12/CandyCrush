@@ -1,4 +1,5 @@
 
+import controlador.ControladorEventos;
 import controlador.ControladorJuego;
 import java.io.IOException;
 import modelo.MatrizJuego;
@@ -17,10 +18,9 @@ import vista.VentanaPrincipal;
 public class Main {
  
      public static void main(String[] args) throws IOException {
-         VentanaPrincipal ventana = new VentanaPrincipal();
-         MatrizJuego matrizjuego=new MatrizJuego();
-         ControladorJuego juego = new ControladorJuego(matrizjuego,ventana);
-         juego.iniciar();
+         
+       ControladorEventos eventos = new ControladorEventos();
+       
            
     }
 }
