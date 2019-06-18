@@ -46,7 +46,7 @@ public class MatrizCambios {
        int combo=2;
        int pinicial =-1;
        int pfinal;
-       
+   
        int f=0;
         while (f<9){
             int c=0;
@@ -57,7 +57,8 @@ public class MatrizCambios {
            
                          case 2:combo=3;pinicial=c;break;
                          case 3:combo=4;pfinal=c+1;guardarCambiosMatrizH(pinicial,pfinal,f);break;
-                         //case 4:combo=5;pfinal=c+1;guardarCambiosMatriz(pinicial,pfinal,f);break;
+                        // case 4:combo=5;pfinal=c+1;guardarCambiosMatrizH(pinicial,pfinal,f);break;
+                         //case 5:combo=6;pfinal=c+1;guardarCambiosMatrizH(pinicial,pfinal,f);break;
          
                     }
                 }else{
@@ -70,15 +71,16 @@ public class MatrizCambios {
             }
           f++;  
         }
-       
+    
     }
     
     
     public void cambiosV(){
+        
        int combo=2;
        int pinicial =-1;
        int pfinal;
-       
+   
        int c=0;
         while (c<9){
             int f=0;
@@ -89,6 +91,8 @@ public class MatrizCambios {
            
                          case 2:combo=3;pinicial=f;break;
                          case 3:combo=4;pfinal=f+1;guardarCambiosMatrizV(pinicial,pfinal,c);break;
+                        // case 4:combo=5;pfinal=f+1;guardarCambiosMatrizV(pinicial,pfinal,c);break;
+                         //case 5:combo=6;pfinal=f+1;guardarCambiosMatrizV(pinicial,pfinal,c);break;
                          
          
                     }
@@ -102,8 +106,54 @@ public class MatrizCambios {
             }
           c++;  
         }
-       
+      
     }
+    
+    public boolean cambios(){
+         boolean general=false;
+         this.cambiosH();
+         this.cambiosV();
+         
+         for(int f = 0; f< 9; f++){
+            for(int c = 0; c< 9; c++){
+                
+                if(matrizcambios[f][c]==1){
+                  general=true;
+                  f=10;
+                  c=10;
+                }
+  
+            }
+        }
+         
+         
+         return general;
+    }
+    
+    public void reiniciarMatriz(){
+        
+        for(int f = 0; f< FILA; f++){
+            for(int c = 0; c< COLUMNA; c++){
+
+             matrizcambios[f][c]=0;
+
+            }
+
+        }
+    }
+    
+    public void mostrarMatriz(){
+        
+        for(int f = 0; f< 9; f++){
+            for(int c = 0; c< 9; c++){
+                System.out.print(matrizcambios[f][c]+" ");
+      
+
+            }
+             System.out.println("");
+        }
+    }
+    
     
     
 }

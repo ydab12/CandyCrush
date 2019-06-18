@@ -12,11 +12,36 @@ import javax.swing.JButton;
  * @author yonathan
  */
 public class Cambios {
+     
     
-    public Cambios(){}
+    public Cambios(){
+        
+    }
     
-    public void efectoClick(JButton[] botones,int boton){
-        //botones[boton].setIcon("src/vista/imagenes/c6.png");
+    
+    public boolean verificar(int[][] matriz) {
+     
+        boolean v=false;
+        MatrizCambios verificar=new MatrizCambios(matriz);
+        
+        if(verificar.cambios()==true){
+            v=true;
+            
+            
+        }
+ 
+        return v;
+    }
+    
+   public int[][] matrizCambios(int[][] matriz){
+       MatrizCambios verificar=new MatrizCambios(matriz);
+       verificar.cambios();
+       
+       return verificar.getMatrizCambios();
+   
+   }
+    
+    public void efectoCambiar(){
     
     }
     
